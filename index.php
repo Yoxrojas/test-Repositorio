@@ -24,13 +24,19 @@ $result = $conn->query($sql);
         <?php
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                echo '<div class="col-md-2 mb-4">';
+                // Escapamos las salidas para prevenir XSS
+                $title = htmlspecialchars($row['title']);
+                $author = htmlspecialchars($row['author']);
+                $price = number_format($row['price'], 2);
+                $coverImage = htmlspecialchars($row['cover_image']);  // Ruta de la imagen desde la base de datos
+
+                echo '<div class="col-md-3 mb-4">';  // Cambié la columna a col-md-3 para una mejor distribución
                 echo '  <div class="card h-100">';
-                echo '      <img src="/Final_Project_Progr_ll/IMG_Libros/' . $row['cover_image'] . '" class="card-img-top" alt="' . $row['title'] . '">';
+                echo '      <img src="IMG_Libros/' . $coverImage . '" class="card-img-top" alt="' . $title . '">';
                 echo '      <div class="card-body">';
-                echo '          <h5 class="card-title">' . $row['title'] . '</h5>';
-                echo '          <p class="card-text">Author: ' . $row['author'] . '</p>';
-                echo '          <p class="card-text">Price: $' . $row['price'] . '</p>';
+                echo '          <h5 class="card-title">' . $title . '</h5>';
+                echo '          <p class="card-text">Author: ' . $author . '</p>';
+                echo '          <p class="card-text">Price: $' . $price . '</p>';
                 echo '      </div>';
                 echo '      <div class="card-footer text-center">';
 

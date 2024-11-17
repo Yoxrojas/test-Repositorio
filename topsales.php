@@ -13,7 +13,7 @@
             <!-- Ejemplo de libro más vendido -->
             <div class="col-md-3 mb-4">
                 <div class="card">
-                    <img src="images/sample.jpg" class="card-img-top" alt="Book Image">
+                    <img src="IMG_Libros/sample.jpg" class="card-img-top" alt="Book Image">
                     <div class="card-body">
                         <h5 class="card-title">Book Title</h5>
                         <p class="card-text">Author Name</p>
